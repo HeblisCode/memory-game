@@ -20,14 +20,14 @@ const useFetch = (numberOfPics) => {
             return {
               id: photo.id,
               photographer: photo.photographer,
-              url: photo.src.small,
+              url: photo.src.medium,
             };
           })
         );
       });
   }, [numberOfPics]);
 
-  return dataArray;
+  return [dataArray, setDataArray];
 };
 
 export default useFetch;

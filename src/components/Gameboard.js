@@ -1,28 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import useFetch from "./useFetch";
 import Card from "./Card";
 import "./Gameboard.css";
 
 const Gameboard = (props) => {
-  console.log("called");
+  const { size, sendCardId } = props;
+  const [imageArray, setImageArray] = useFetch(size);
 
-  const flipCards = (cards) => {
-    cards.forEach((card) => card.classList.toggle("showBack"));
-  };
+  function clickCard(id) {
+    setImageArray(shuffleArray(imageArray));
+    sendCardId(id);
+  }
 
-  useEffect(() => {
-    const cards = document.querySelectorAll(".Card");
-    cards.forEach((card) =>
-      card.addEventListener("click", () => flipCards(cards))
-    );
-  }, []);
-
-  const { dataArray } = props;
+  function shuffleArray(array) {
+    const shuffledArray = [];
+    while (array.length !== 0) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      shuffledArray.push(array.splice(randomIndex, 1)[0]);
+    }
+    return shuffledArray;
+  }
 
   return (
     <div className="Gameboard">
-      {dataArray.map((data, i) => {
-        const { url, id } = data;
-        return <Card key={id} image={url} />;
+      {imageArray.map((image) => {
+        const { id, url, photographer } = image;
+        return (
+          <Card
+            id={id}
+            url={url}
+            photographer={photographer}
+            key={id}
+            clickHandler={clickCard}
+          />
+        );
       })}
     </div>
   );
