@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import useFetch from "./useFetch";
+import useFetch from "../useFetch";
 import Card from "./Card";
 import "./Gameboard.css";
 
@@ -45,15 +45,12 @@ const Gameboard = (props) => {
   return (
     <div className="Gameboard" ref={mounted}>
       {imageArray.map((image, i) => {
-        const { id, url, photographer } = image;
         return (
           <Card
-            id={id}
-            url={url}
-            photographer={photographer}
-            key={id}
-            clickCard={clickCard}
+            data={image}
             order={i}
+            clickHandler={clickCard}
+            key={image.id}
           />
         );
       })}

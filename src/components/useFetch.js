@@ -19,8 +19,9 @@ const useFetch = (numberOfPics) => {
           data.photos.map((photo) => {
             return {
               id: photo.id,
-              photographer: photo.photographer,
               url: photo.src.medium,
+              photographer: photo.photographer,
+              photographerUrl: photo.photographer_url,
             };
           })
         );
