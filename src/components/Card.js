@@ -1,16 +1,29 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Card.css";
 
 const Card = (props) => {
-  const { url, id, photographer, clickHandler } = props;
+  const { url, id, photographer, clickCard, order } = props;
+  const [transitioning, setTransitioning] = useState(false);
+  const cardRef = useRef(null);
 
-  useEffect(() => {
-    console.log("mounting");
-    return () => console.log("unmounting");
-  }, []);
+  // useEffect(() => {
+  //   cardRef.current.addEventListener("transitionend", () => {
+  //     if (transitioning) {
+  //       setTransitioning(false);
+  //       cardRef.current.classList.remove("showBack");
+  //       clickCard(id);
+  //     }
+  //   });
+  //   return () => console.log("unmounting");
+  // }, []);
 
   return (
-    <div className={"Card"} onClick={() => clickHandler(id)}>
+    <div
+      className={"Card"}
+      onClick={() => clickCard(id)}
+      ref={cardRef}
+      style={{ "--order": order }}
+    >
       <div className="CardFront">
         <img src={url} alt="" />
       </div>

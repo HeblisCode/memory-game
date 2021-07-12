@@ -1,3 +1,4 @@
+import "./App.css";
 import { useEffect, useState } from "react";
 import Gameboard from "./components/Gameboard";
 import Gameover from "./components/Gameover";

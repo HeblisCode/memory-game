@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import useFetch from "./useFetch";
 import Card from "./Card";
 import "./Gameboard.css";
@@ -6,11 +6,32 @@ import "./Gameboard.css";
 const Gameboard = (props) => {
   const { size, sendCardId } = props;
   const [imageArray, setImageArray] = useFetch(size);
+  const mounted = useRef(null);
 
+  //flip and shuffle the cards
   function clickCard(id) {
-    setImageArray(shuffleArray(imageArray));
-    sendCardId(id);
+    const cards = document.querySelectorAll(".Card");
+    //hide all the cards
+    cards.forEach((card) => card.classList.add("showBack"));
+    //wait till the transitions are over
+    setTimeout(() => {
+      setImageArray(shuffleArray(imageArray));
+      sendCardId(id);
+    }, size * 80 + 500);
   }
+
+  //flip the cards back after the shuffling is done
+  useEffect(() => {
+    //check if the Gameboard component is already mounted
+    if (mounted.current) {
+      const cards = document.querySelectorAll(".Card");
+      setTimeout(() => {
+        cards.forEach((card, i) => {
+          card.classList.remove("showBack");
+        });
+      }, 0);
+    }
+  }, [imageArray]);
 
   function shuffleArray(array) {
     const shuffledArray = [];
@@ -22,8 +43,8 @@ const Gameboard = (props) => {
   }
 
   return (
-    <div className="Gameboard">
-      {imageArray.map((image) => {
+    <div className="Gameboard" ref={mounted}>
+      {imageArray.map((image, i) => {
         const { id, url, photographer } = image;
         return (
           <Card
@@ -31,7 +52,8 @@ const Gameboard = (props) => {
             url={url}
             photographer={photographer}
             key={id}
-            clickHandler={clickCard}
+            clickCard={clickCard}
+            order={i}
           />
         );
       })}

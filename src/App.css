@@ -1,0 +1,32 @@
+:root {
+  --prim: #eeede7;
+  --sec: #868b8e;
+  --accOne: #b9b7bd;
+  --accTwo: #e7d2cc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--accOne);
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: var(--accTwo);
+  color: var(--sec);
+  padding: 1rem;
+  margin: 0.5rem;
+}
