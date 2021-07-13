@@ -1,12 +1,14 @@
-.GameboardContainer {
+.animatedGameboard {
   position: relative;
   width: 600px;
   height: 600px;
 }
+.GameboardContainer {
+  width: 100%;
+  height: 100%;
+}
 .Gameboard {
   display: grid;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   grid-template-columns: repeat(var(--gameboardSize), 1fr);

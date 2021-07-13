@@ -15,20 +15,28 @@ const useFetch = (numberOfPics) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setDataArray(
-          data.photos.map((photo) => {
-            return {
-              id: photo.id,
-              url: photo.src.medium,
-              photographer: photo.photographer,
-              photographerUrl: photo.photographer_url,
-            };
-          })
-        );
-      });
+        return data.photos.map((photo) => {
+          return {
+            id: photo.id,
+            url: photo.src.medium,
+            photographer: photo.photographer,
+            photographerUrl: photo.photographer_url,
+          };
+        });
+      })
+      .then((array) => setDataArray(shuffleArray(array)));
   }, [numberOfPics]);
 
   return [dataArray, setDataArray];
 };
+
+function shuffleArray(array) {
+  const shuffledArray = [];
+  while (array.length !== 0) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    shuffledArray.push(array.splice(randomIndex, 1)[0]);
+  }
+  return shuffledArray;
+}
 
 export default useFetch;

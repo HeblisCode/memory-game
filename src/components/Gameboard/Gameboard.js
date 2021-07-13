@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import useFetch from "../useFetch";
 import Card from "./Card";
-import "./Gameboard.css";
 
 const Gameboard = (props) => {
   const { size, sendCardId } = props;
@@ -9,14 +8,14 @@ const Gameboard = (props) => {
   const mounted = useRef(null);
 
   //flip and shuffle the cards
-  function clickCard(id) {
+  function clickCard(id, ref) {
     const cards = document.querySelectorAll(".Card");
     //hide all the cards
     cards.forEach((card) => card.classList.add("showBack"));
     //wait till the transitions are over
     setTimeout(() => {
       setImageArray(shuffleArray(imageArray));
-      sendCardId(id);
+      sendCardId(id, ref);
     }, size * 80 + 500);
   }
 

@@ -1,8 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import Gameboard from "./components/Gameboard/Gameboard";
-import Gameover from "./components/Gameboard/Gameover";
-import Gameboardv2 from "./components/Gameboard/Gameboardv2";
+import GameboardTransition from "./components/Gameboard/GameboardTransition";
 import Score from "./components/Score";
 
 function App() {
@@ -31,12 +29,15 @@ function App() {
 
   const updateClickedCards = (id) => {
     setClickedCards([...clickedCards, id]);
-    console.log(clickedCards);
   };
 
   const changeDiff = (num) => {
-    setDiff(num);
-    resetGame();
+    const cards = document.querySelectorAll(".Card");
+    cards.forEach((card) => card.classList.add("showBack"));
+    setTimeout(() => {
+      setDiff(num);
+      resetGame();
+    }, diff * diff * 80 + 500); //wait for the transitions to end
   };
 
   return (
@@ -45,18 +46,12 @@ function App() {
       <button onClick={() => changeDiff(3)}>Easy</button>
       <button onClick={() => changeDiff(4)}>Medium</button>
       <button onClick={() => changeDiff(5)}>Hard</button>
-      {/* {winning ? (
-        <Gameboard size={diff * diff} sendCardId={updateClickedCards} />
-      ) : (
-        <Gameover reset={resetGame} />
-      )} */}
-      <div className="GameboardContainer">
-        <Gameboardv2
-          size={diff * diff}
-          sendCardId={updateClickedCards}
-          winning={winning}
-        />
-      </div>
+      <GameboardTransition
+        winning={winning}
+        size={diff ** 2}
+        sendCardId={updateClickedCards}
+        reset={resetGame}
+      />
     </div>
   );
 }
