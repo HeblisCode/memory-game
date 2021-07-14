@@ -12,6 +12,8 @@
   flex-direction: column;
   color: var(--accTwo);
   font-size: 1.3rem;
+  -webkit-box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
 }
 .HowToPlay > h2 {
   text-align: center;
@@ -30,6 +32,8 @@
   align-items: center;
   justify-content: center;
   color: var(--accTwo);
+  -webkit-box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
 }
 .score {
   display: flex;
@@ -47,7 +51,7 @@
 }
 
 /*BUTTONS STYLING*************************************************/
-button {
+.diffSettings > button {
   font-family: "Acme", sans-serif;
   background-color: var(--accOne);
   border: none;
@@ -59,7 +63,7 @@ button {
   border-radius: 0.5rem;
   color: var(--accTwo);
 }
-button:hover {
+.diffSettings > button:hover {
   background-color: var(--sec);
 }
 

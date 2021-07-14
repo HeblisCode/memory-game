@@ -8,7 +8,8 @@ import HowToPlay from "./components/SideMenu/HowToPlay";
 function App() {
   const [diff, setDiff] = useState(3);
   const [clickedCards, setClickedCards] = useState([]);
-  const [winning, setWinning] = useState(true);
+  const [gameover, setGameover] = useState(false);
+  const [win, setWin] = useState(false);
   const [score, setScore] = useState(0);
 
   useEffect(() => {
@@ -17,15 +18,23 @@ function App() {
     if (
       clickedCards.some((id, i) => id === lastElemId && i !== lastElemIndex)
     ) {
-      setWinning(false);
+      setGameover(true);
+      setWin(false);
     } else {
-      setScore(clickedCards.length);
+      if (clickedCards.length === diff ** 2) {
+        setScore(clickedCards.length);
+        setGameover(true);
+        setWin(true);
+      } else {
+        setScore(clickedCards.length);
+      }
     }
-  }, [clickedCards]);
+  }, [clickedCards, diff]);
 
   const resetGame = () => {
     setClickedCards([]);
-    setWinning(true);
+    setGameover(false);
+    setWin(false);
     setScore(0);
   };
 
@@ -37,7 +46,8 @@ function App() {
     <div className="App" style={{ "--gameboardSize": diff }}>
       <div className="gameboardWrapper">
         <GameboardTransition
-          winning={winning}
+          win={win}
+          gameover={gameover}
           size={diff ** 2}
           sendCardId={updateClickedCards}
           reset={resetGame}

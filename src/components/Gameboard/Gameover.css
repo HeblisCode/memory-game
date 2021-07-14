@@ -1,0 +1,64 @@
+.Gameover {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.gameOverCircle1 {
+  background-color: var(--prim);
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
+}
+.gameOverCircle2 {
+  background-color: var(--accTwo);
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
+}
+.gameOverCircle3 {
+  background-color: var(--sec);
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.gameOverCircle3 > h2 {
+  color: var(--accTwo);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.gameOverCircle3 > button {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--accTwo);
+  color: var(--prim);
+  font-family: "Acme", sans-serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.gameOverCircle3 > button:hover {
+  background-color: var(--prim);
+  color: var(--accTwo);
+}

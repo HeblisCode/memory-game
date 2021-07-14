@@ -4,9 +4,9 @@ import Gameboard from "./Gameboard";
 import Gameover from "./Gameover";
 
 const Gameboardv2 = (props) => {
-  const { winning, size, sendCardId, reset } = props;
+  const { win, gameover, size, sendCardId, reset } = props;
 
-  const transitions = useTransition(winning, {
+  const transitions = useTransition(!gameover, {
     from: { position: "absolute", opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
@@ -32,7 +32,7 @@ const Gameboardv2 = (props) => {
           opacity: opacity.to({ range: [1.0, 0.0], output: [1, 0] }),
         }}
       >
-        <Gameover reset={reset} />
+        <Gameover reset={reset} win={win} />
       </animated.div>
     )
   );
