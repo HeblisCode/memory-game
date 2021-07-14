@@ -1,5 +1,6 @@
 import React from "react";
 import "./SideMenu.css";
+import Links from "../Links/Links";
 
 export default function HowToPlay() {
   return (
@@ -12,6 +13,7 @@ export default function HowToPlay() {
         score resets to zero. The main objective is to get the highest score as
         possible.
       </p>
+      <Links />
     </div>
   );
 }
