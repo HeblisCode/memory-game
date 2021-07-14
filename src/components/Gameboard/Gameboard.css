@@ -1,8 +1,20 @@
 .animatedGameboard {
   position: relative;
-  width: 600px;
-  height: 600px;
+  width: 40rem;
+  height: 40rem;
 }
+@media screen and (max-width: 1280px), (max-height: 720px) {
+  .animatedGameboard {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+/* @media screen and (max-height: 720px) {
+  .animatedGameboard {
+    width: 30rem;
+    height: 30rem;
+  }
+} */
 .GameboardContainer {
   width: 100%;
   height: 100%;
@@ -13,5 +25,5 @@
   height: 100%;
   grid-template-columns: repeat(var(--gameboardSize), 1fr);
   grid-template-rows: repeat(var(--gameboardSize), 1fr);
-  gap: 15px;
+  gap: 1rem;
 }

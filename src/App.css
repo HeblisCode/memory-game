@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+
 :root {
-  --prim: #eeede7;
-  --sec: #868b8e;
-  --accOne: #b9b7bd;
-  --accTwo: #e7d2cc;
+  --prim: #7f8fa3;
+  --sec: #ffa0a3;
+  --accOne: #77ddf9;
+  --accTwo: #eafbff;
 }
 
 * {
@@ -20,13 +22,47 @@ body {
   width: 100%;
   min-height: 100vh;
   background-color: var(--accOne);
+  font-family: "Acme", sans-serif;
 }
 
-button {
-  border: none;
-  outline: none;
-  background-color: var(--accTwo);
-  color: var(--sec);
-  padding: 1rem;
-  margin: 0.5rem;
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App {
+  display: grid;
+  width: 100%;
+  max-width: 1130px;
+  max-height: 40rem;
+  height: 100%;
+  grid-template-columns: 40rem minmax(430px, 1fr);
+  grid-template-rows: 1fr 12rem;
+  row-gap: 1rem;
+  column-gap: 2rem;
+}
+
+.gameboardWrapper {
+  height: 40rem;
+  width: 40rem;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  grid-row: span 2;
+}
+
+@media screen and (max-width: 1280px), (max-height: 720px) {
+  .App {
+    height: 30rem;
+    max-width: 1000px;
+    grid-template-columns: 30rem minmax(430px, 1fr);
+  }
+  .gameboardWrapper {
+    height: 30rem;
+    width: 30rem;
+  }
 }

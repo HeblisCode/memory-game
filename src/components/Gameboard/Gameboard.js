@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import useFetch from "../useFetch";
+import useFetch from "../Hooks/useFetch";
 import Card from "./Card";
 
 const Gameboard = (props) => {

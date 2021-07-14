@@ -27,11 +27,9 @@ export default function Score(props) {
   }, [bestScore]);
 
   return (
-    <div>
-      <h2>Current score: {currentScore}</h2>
-      <h2>
-        Best score ({diff} x {diff}): {bestScore[diff - DIFF_OFFSET]}
-      </h2>
+    <div className="score">
+      <h2>Score: {currentScore}</h2>
+      <h2>Record: {bestScore[diff - DIFF_OFFSET]}</h2>
     </div>
   );
 }
