@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideMenu.css";
-import Links from "../Links/Links";
+import Links from "./Links";
 
 export default function HowToPlay() {
   return (

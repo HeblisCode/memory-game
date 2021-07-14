@@ -1,6 +1,6 @@
 # Memory Cat
 
-### [Live View](#)<br>
+### [Live Preview](http://HeblisCode.github.io/memory-game)<br>
 
 ### How to play <br>
 
